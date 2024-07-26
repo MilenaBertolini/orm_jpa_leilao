@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import orm.leilao.model.ItemDeLeilao;
+import orm.leilao.model.Lance;
+import orm.leilao.model.Participante;
 import orm.leilao.service.ItemDeLeilaoService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,6 +69,18 @@ public class ItemDeLeilaoController {
         itemDeLeilaoService.deleteItemDeLeilao(id);
 
     }
+
+    @PostMapping("/{id}")
+    public Lance adicionaLance(@PathVariable Long id, @RequestBody Lance lance) {
+        
+        return itemDeLeilaoService.lanceItemDeLeilao(id, lance);
+    }
+
+    @PatchMapping("/{id}")
+    public Participante finalizaLeilao(@PathVariable Long id){
+        return itemDeLeilaoService.finalizaLeilao(id);
+    }
+    
     
     
 }

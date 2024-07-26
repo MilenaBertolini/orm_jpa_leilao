@@ -20,6 +20,11 @@ public class LanceService {
     // @Autowired
     // private ParticipanteService participanteService;
 
+    public Lance createLance(Lance lance){
+
+        return lanceRepository.save(lance);
+    }
+
     public Lance updateLance(Long id, Lance lance){
         
         Optional<Lance> existeLance = lanceRepository.findById(id);
