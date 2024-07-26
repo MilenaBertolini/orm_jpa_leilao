@@ -1,5 +1,6 @@
 package orm.leilao.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +22,31 @@ public class ItemDeLeilaoService {
     }
 
     public ItemDeLeilao updateItemDeLeilao(Long id, ItemDeLeilao item) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateItemDeLeilao'");
+
+        item.setId(id);
+
+        return itemDeLeilaoRepository.save(item);
     }
 
     public ItemDeLeilao getItemLeilaoById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'busca'");
+
+        return itemDeLeilaoRepository.findById(id).get();
     }
 
     public List<ItemDeLeilao> getAllItensLeilao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllItensLeilao'");
+        
+        List<ItemDeLeilao> itensLeilao = new ArrayList<>();
+
+        // lanceRepository.findAll().forEach(lances::add);
+        itemDeLeilaoRepository.findAll().forEach(item -> itensLeilao.add(item));
+
+        return itensLeilao;
+
     }
  
     public void deleteItemDeLeilao(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteItemDeLeilao'");
+        
+        itemDeLeilaoRepository.deleteById(id);
     }
 
 }
