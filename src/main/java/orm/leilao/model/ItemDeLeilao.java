@@ -10,12 +10,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString(exclude = { "id", "lancesRecebidos", "lanceVencedor" })
+@EqualsAndHashCode(of = { "nome", "valorMinimo" })
 @Entity
 public class ItemDeLeilao {
     
@@ -41,6 +47,12 @@ public class ItemDeLeilao {
         this.valorMinimo = valorMinimo;
         this.leilaoAberto = leilaoAberto;
 
+    }
+
+    public void adicionarLance(Lance lance){
+        if(lance.getValor() >= this.valorMinimo){
+            this.lancesRecebidos.add(lance);
+        }
     }
 
 }
