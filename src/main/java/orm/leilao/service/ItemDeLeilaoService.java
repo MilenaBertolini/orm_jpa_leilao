@@ -116,7 +116,7 @@ public class ItemDeLeilaoService {
 
     public boolean validaValorLance(Double valor){
 
-        List<Lance> allLances = new ArrayList<>();
+        List<Lance> allLances;
 
         allLances = lanceService.getAllLances();
 
