@@ -87,9 +87,7 @@ public class ItemDeLeilaoService {
         ItemDeLeilao getItem = getItemLeilaoById(id);
         
 
-        if(getItem != null && verificaLeilao(getItem)){
-
-            if(validaValorLance(lance.getValor())){
+        if(getItem != null && verificaLeilao(getItem) && validaValorLance(lance.getValor())){
                 
                 getItem.getLancesRecebidos().add(lance);
                 getItem.setLanceVencedor(lance);
@@ -97,9 +95,6 @@ public class ItemDeLeilaoService {
                 return lanceService.createLance(lance);
 
             }
-
-            
-        }
 
         return null;        
 
