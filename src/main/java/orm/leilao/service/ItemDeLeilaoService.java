@@ -61,7 +61,7 @@ public class ItemDeLeilaoService {
         
         List<ItemDeLeilao> itensLeilao = new ArrayList<>();
 
-        itemDeLeilaoRepository.findAll().forEach(item -> itensLeilao.add(item));
+        itemDeLeilaoRepository.findAll().forEach(itensLeilao::add);
 
         return itensLeilao;
 
